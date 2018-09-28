@@ -2,7 +2,12 @@ import React from 'react'
 
 const Footer = () => {
         return (
-            <a>@marthamareal@gmail.com</a>
+            <footer className="footer">
+                <div  className="container">
+                    <a>developed by Tesseract @marthamareal@gmail.com</a>
+                </div>
+            </footer>
+
         )
     };
 
