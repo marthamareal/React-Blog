@@ -1,9 +1,9 @@
 import React from 'react';
 
+import '../styles/styles.css';
 
 import Header from './Header'
 import Footer from './Footer'
-import Profile from "./Blog/Profile";
 import Content from "./Blog/Content";
 
 const App =()=>  {
@@ -11,7 +11,8 @@ const App =()=>  {
         <div className="App">
             <Header />
 
-             <Profile />
+             <Content />
+
             <Footer />
         </div>
     )
