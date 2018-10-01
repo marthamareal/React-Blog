@@ -1,58 +1,60 @@
 import React from 'react';
 
+
 import '../styles/styles.scss';
+import HomeImg from "./Blog/static/article.jpg";
 
 import Header from './Header'
 import Footer from './Footer'
 import Content from "./Blog/Content";
-import * as axios from "axios";
+import {Route} from "react-router-dom";
 
 class App extends React.Component{
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state = {article:"dsdsdscdsc"};
-        this.getArticle = this.getArticle.bind(this);
-
+        this.state = {article: "dsdsdscdsc"};
     }
 
-    componentDidMount(){
-        this.getArticle();
-    }
-
-    getArticle = () => {
-        const url = 'https://reqres.in/api/users/2';
-        const headers = {
-            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9." +
-                "eyJpZCI6OCwidXNlcm5hbWUiOiJNYXJ0aGFWYWtpc2giLCJleHAiOjE1MzgyMzQzNjF9." +
-                "v7RaexxBZRIOwibsbiGQPAnTF4zKhKKdP6L3Nt4Gtns"
-        };
-
-        axios.get(url, {headers: headers})
-            .then( (response) => {
-            // console.log(response.data.data)
-                this.setState({article: response.data.data})
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-
-  }
 
     render () {
 
         return (
             <div className="App">
+
                 <Header />
 
-                <Content title="HOW TO TRAIN A DRAGON" body={this.state.article} />
-                <Content title="HOW TO TRAIN A DRAGON" body={{ first_name: 'martha'}} />
+                    <Route exact path='/' component={this.Home}/>
+                    <Route path='/blog' component={Content}/>
+                    <Route path='/about' component={this.About}/>
 
                 <Footer />
             </div>
         )
     }
+
+    Home = () =>{
+
+        return (
+            <div>
+                <img src={HomeImg} alt="..." className="responsive-img"/>
+            </div>
+
+        )
+
+    };
+
+    About = () =>{
+
+        return (
+            <div>
+                <p>This is  about page</p>
+            </div>
+
+        )
+
+    };
 
 }
 
